@@ -6,11 +6,13 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:01:19 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/10 16:12:30 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:33:40 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter() {};
 
 void ScalarConverter::convert(const std::string &str)
 {
@@ -20,7 +22,7 @@ void ScalarConverter::convert(const std::string &str)
 	float				x_float;
 	double				x_double;	
 
-	if (!str.empty() && str.back() == 'f') {
+	if (!str.empty() && str != "inff" && str != "+inff" && str != "-inff" && str.back() == 'f') {
 		tmp.pop_back();
 	}
 
@@ -54,38 +56,46 @@ void ScalarConverter::convert(const std::string &str)
 
  // conversion to float
 	{
-		//if (tmp == "nan")
-			//std::cout << "nanf" << std::endl;
-		//else 
+		std::cout << "float: ";
+		if (tmp == "nan")
+			std::cout << "nanf" << std::endl;
+		else if (tmp == "inff" || tmp == "-inff")
+			std::cout << tmp << std::endl;
+		else if (tmp == "+inff")
+			std::cout << "inff" << std::endl;
+		else
 		{
 			std::stringstream	ss2(tmp);
 			if (ss2 >> x_float) {
-				int test_int = static_cast<int>(x_float);
-				if (x_float - test_int > 0.0 || tmp == "nan")
-					std::cout << "float: " << x_float << "f" << std::endl;
+				double intPart;
+				double fracPart = std::modf(x_float, &intPart);
+				if (fracPart == 0.0)
+					std::cout << x_float << ".0f" << std::endl;
 				else
-					std::cout << "float: " << x_float << ".0f" << std::endl;
+					std::cout << x_float << "f" << std::endl;
 			}
 			else
-				std::cout << "float: impossible" << std::endl;
+				std::cout << "impossible" << std::endl;
 		}
 	}
 
  // conversion to double
 	{
+		std::cout << "double: ";
 		if (tmp == "nan")
 			std::cout << "nan" << std::endl;
-		else {
+		else 
+		{
 			std::stringstream	ss3(tmp);
 			if (ss3 >> x_double) {
 				int test_int = static_cast<int>(x_double);
 				if (x_double - test_int > 0.0)
-					std::cout << "double: " << x_double << std::endl;
+					std::cout << x_double << std::endl;
 				else
-					std::cout << "double: " << x_double << ".0" << std::endl;
+					std::cout << x_double << ".0" << std::endl;
 			}
 			else
-				std::cout << "double: impossible" << std::endl;
+				std::cout << "impossible" << std::endl;
 		}
 	}
 }

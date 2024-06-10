@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:30:08 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/10 13:42:59 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/10 17:33:12 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 class ScalarConverter
 {
