@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:30:08 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/11 09:56:12 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/11 10:10:57 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class ScalarConverter
 	private:
 		ScalarConverter();
 		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &copy);
+		ScalarConverter &operator=(const ScalarConverter &copy);
 };
 
 #endif
