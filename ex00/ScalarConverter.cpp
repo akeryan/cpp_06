@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:01:19 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/11 09:56:06 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/11 18:06:14 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ void ScalarConverter::convert(const std::string &str)
 		{
 			std::stringstream	ss3(tmp);
 			if (ss3 >> x_double) {
-				int test_int = static_cast<int>(x_double);
-				if (x_double - test_int > 0.0)
-					std::cout << x_double << std::endl;
-				else
+				double intPart;
+				double fracPart = std::modf(x_double, &intPart);
+				if(fracPart == 0.0)
 					std::cout << x_double << ".0" << std::endl;
+				else
+					std::cout << x_double << std::endl;
 			}
 			else
 				std::cout << "impossible" << std::endl;
