@@ -6,13 +6,15 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:01:19 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/11 09:27:16 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:56:06 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {};
+
+ScalarConverter::~ScalarConverter() {};
 
 void ScalarConverter::convert(const std::string &str)
 {

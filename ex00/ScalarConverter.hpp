@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:30:08 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/10 17:33:12 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:56:12 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ class ScalarConverter
 {
 	public:
 		static void convert(const std::string &str);
+
 	private:
 		ScalarConverter();
+		~ScalarConverter();
 };
 
 #endif
