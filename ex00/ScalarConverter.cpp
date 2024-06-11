@@ -6,7 +6,7 @@
 /*   By: akeryan <akeryan@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 11:01:19 by akeryan           #+#    #+#             */
-/*   Updated: 2024/06/10 17:33:40 by akeryan          ###   ########.fr       */
+/*   Updated: 2024/06/11 09:27:16 by akeryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,15 @@ void ScalarConverter::convert(const std::string &str)
 	float				x_float;
 	double				x_double;	
 
-	if (!str.empty() && str != "inff" && str != "+inff" && str != "-inff" && str.back() == 'f') {
+	if (!str.empty() && \
+			str != "inff" && \
+			str != "+inff" && \
+			str != "-inff" && \
+			str != "inf" && \
+			str != "-inf" && \
+			str != "+inf" && \
+			str.back() == 'f') 
+	{
 		tmp.pop_back();
 	}
 
@@ -58,11 +66,11 @@ void ScalarConverter::convert(const std::string &str)
 	{
 		std::cout << "float: ";
 		if (tmp == "nan")
-			std::cout << "nanf" << std::endl;
-		else if (tmp == "inff" || tmp == "-inff")
-			std::cout << tmp << std::endl;
-		else if (tmp == "+inff")
-			std::cout << "inff" << std::endl;
+			std::cout << std::numeric_limits<float>::quiet_NaN() << "f" << std::endl;
+		else if (tmp == "inf" || tmp == "inff" || tmp == "+inf" || tmp == "+inff")
+			std::cout << std::numeric_limits<float>::infinity() << "f" << std::endl;
+		else if (tmp == "-inf" || tmp == "-inff")
+			std::cout << -std::numeric_limits<float>::infinity() << "f" << std::endl;
 		else
 		{
 			std::stringstream	ss2(tmp);
@@ -83,7 +91,11 @@ void ScalarConverter::convert(const std::string &str)
 	{
 		std::cout << "double: ";
 		if (tmp == "nan")
-			std::cout << "nan" << std::endl;
+			std::cout << std::numeric_limits<double>::quiet_NaN() << std::endl;
+		else if (tmp == "inf" || tmp == "inff" || tmp == "+inf" || tmp == "+inff")
+			std::cout << std::numeric_limits<double>::infinity() << std::endl;
+		else if (tmp == "-inf" || tmp == "-inff")
+			std::cout << -std::numeric_limits<double>::infinity() << std::endl;
 		else 
 		{
 			std::stringstream	ss3(tmp);
